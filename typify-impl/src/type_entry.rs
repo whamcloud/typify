@@ -911,6 +911,7 @@ impl TypeEntry {
                     impl ::std::str::FromStr for #type_name {
                         type Err = self::error::ConversionError;
 
+                        #[allow(irrefutable_let_patterns)]
                         fn from_str(value: &str) ->
                             ::std::result::Result<Self, self::error::ConversionError>
                         {
