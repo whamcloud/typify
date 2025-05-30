@@ -1561,7 +1561,7 @@ impl TypeEntry {
                     let err = format!("doesn't match pattern \"{}\"", p);
                     quote! {
                         static PATTERN: ::std::sync::LazyLock<::regress::Regex> = ::std::sync::LazyLock::new(|| {
-                            ::regress::Regex::new(#p).unwrap()
+                            ::regress::Regex::new(#p).expect("Invalid regex pattern in schema")
                         });
                         if PATTERN.find(value).is_none() {
                             return Err(#err.into());
